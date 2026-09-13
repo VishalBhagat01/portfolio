@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -12,15 +12,27 @@ export default function App() {
 
   const handleTabChange = (tabId) => {
     setActiveTab(tabId);
-    // Smooth scroll to top of content container when switching tabs
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (tabId === 'home') {
+      // Smooth scroll back to top of hero on home
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // Smoothly scroll down to details section when switching to any tab
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          const el = document.getElementById('details-section');
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 50);
+      });
+    }
   };
 
   // Keyboard shortcut: Escape to return to home tab
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        setActiveTab('home');
+        handleTabChange('home');
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -37,7 +49,7 @@ export default function App() {
         <Hero onNavigate={handleTabChange} />
 
         {/* Tab Content Panels with Smooth Fade-in */}
-        <div className="tab-panels-wrapper">
+        <div className="tab-panels-wrapper" id="details-section">
           {activeTab === 'home' && (
             <div className="tab-pane active-pane fade-in">
               <section className="home-highlights-section">
@@ -50,38 +62,50 @@ export default function App() {
                 </div>
 
                 <div className="home-cards-grid">
-                  {/* Highlight 1: AI Agent */}
+                  {/* Highlight 1: Quant Pilot */}
                   <div
                     className="highlight-card"
                     onClick={() => handleTabChange('work')}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        handleTabChange('work');
+                      }
+                    }}
                     role="button"
                     tabIndex={0}
                   >
-                    <div className="highlight-tag font-mono">FEATURED SYSTEM</div>
+                    <div className="highlight-tag font-mono">FEATURED SYSTEM &bull; FINANCE</div>
                     <h3 className="highlight-title">Quant Pilot &bull; Agentic Trading Graph</h3>
                     <p className="highlight-desc">
-                      Autonomous trading research workflow powered by LangGraph, Groq LPU, and multi-agent risk synthesis.
+                      Autonomous trading terminal with stateful multi-agent reasoning, Alpaca API live execution, and persistent PostgreSQL memory.
                     </p>
                     <div className="highlight-meta font-mono">
-                      <span>LangGraph &bull; FastAPI &bull; Groq</span>
+                      <span>LangGraph &bull; FastAPI &bull; Alpaca &bull; Postgres</span>
                       <span className="highlight-arrow">&rarr;</span>
                     </div>
                   </div>
 
-                  {/* Highlight 2: RAG Architecture */}
+                  {/* Highlight 2: Open Source Agent */}
                   <div
                     className="highlight-card"
                     onClick={() => handleTabChange('work')}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        handleTabChange('work');
+                      }
+                    }}
                     role="button"
                     tabIndex={0}
                   >
-                    <div className="highlight-tag font-mono">RAG &amp; RETRIEVAL</div>
-                    <h3 className="highlight-title">Untold India AI &bull; Conversational RAG</h3>
+                    <div className="highlight-tag font-mono">AUTONOMOUS SWE AGENT</div>
+                    <h3 className="highlight-title">Open Source Agent &bull; Code Patch Engine</h3>
                     <p className="highlight-desc">
-                      High-throughput conversational AI combining vector embeddings, multi-tier LRU/TTL caching, and asynchronous FastAPI.
+                      Autonomous software engineering agent analyzing GitHub issues, planning AST edits, and synthesizing production patches with Ollama.
                     </p>
                     <div className="highlight-meta font-mono">
-                      <span>PostgreSQL &bull; SQLAlchemy &bull; Caching</span>
+                      <span>LangGraph &bull; Ollama &bull; FastAPI &bull; Git</span>
                       <span className="highlight-arrow">&rarr;</span>
                     </div>
                   </div>
@@ -90,16 +114,22 @@ export default function App() {
                   <div
                     className="highlight-card"
                     onClick={() => handleTabChange('work')}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        handleTabChange('work');
+                      }
+                    }}
                     role="button"
                     tabIndex={0}
                   >
                     <div className="highlight-tag font-mono">DEVELOPER TOOLING</div>
                     <h3 className="highlight-title">EiziAPI &bull; AI Endpoint Synthesis</h3>
                     <p className="highlight-desc">
-                      Natural language to production FastAPI endpoints with automated schema verification and zero hallucination.
+                      Natural language to production FastAPI endpoints with Pydantic validation, zero hallucination, and downloadable PDF documentation.
                     </p>
                     <div className="highlight-meta font-mono">
-                      <span>FastAPI &bull; Pydantic &bull; LangGraph</span>
+                      <span>Groq &bull; Gemini &bull; FastAPI &bull; LangGraph</span>
                       <span className="highlight-arrow">&rarr;</span>
                     </div>
                   </div>
@@ -116,7 +146,7 @@ export default function App() {
                       <span>// View All 5 Case Studies</span>
                     </button>
                     <button onClick={() => handleTabChange('resume')} className="explore-chip">
-                      <span>// ATS-Friendly Resume</span>
+                      <span>// Download Official Resume</span>
                     </button>
                     <button onClick={() => handleTabChange('links')} className="explore-chip">
                       <span>// Connect &amp; Channels</span>

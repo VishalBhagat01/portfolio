@@ -1,6 +1,5 @@
-import React from 'react';
 import avatarImg from '../assets/avatar.png';
-import { IconArrowRight, IconTerminal, IconCheck } from './Icons';
+import { IconArrowRight, IconTerminal } from './Icons';
 
 export default function Hero({ onNavigate }) {
   return (
@@ -71,7 +70,7 @@ export default function Hero({ onNavigate }) {
               <div className="t-line">
                 <span className="t-prompt">$</span> <span className="t-cmd">whoami</span>
               </div>
-              <div className="t-out t-user">vishal@ai-engineer</div>
+              <div className="t-out t-user">vishalbhagat@ai-engineer</div>
               <div className="t-line mt-2">
                 <span className="t-muted">focus:</span>
               </div>

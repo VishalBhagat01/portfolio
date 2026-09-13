@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   IconMail,
   IconGithub,
@@ -14,12 +14,14 @@ export default function Links() {
   const [copied, setCopied] = useState(false);
   const emailAddress = 'vishalbhagattt01@gmail.com';
 
-  const copyEmail = () => {
-    navigator.clipboard.writeText(emailAddress);
-    setCopied(true);
-    setTimeout(() => {
-      setCopied(false);
-    }, 2400);
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(emailAddress);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2400);
+    } catch (error) {
+      console.warn('Unable to copy email address:', error);
+    }
   };
 
   return (

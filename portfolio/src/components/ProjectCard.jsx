@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment, useState } from 'react';
 import { IconExternalLink, IconGithub } from './Icons';
 
 export default function ProjectCard({
@@ -7,6 +7,7 @@ export default function ProjectCard({
   subtitle,
   category,
   description,
+  highlights,
   architectureFlow,
   challenge,
   solution,
@@ -14,6 +15,9 @@ export default function ProjectCard({
   demoUrl,
   githubUrl,
 }) {
+  const [showDeepDive, setShowDeepDive] = useState(false);
+  const hasDeepDive = (architectureFlow && architectureFlow.length > 0) || challenge || solution;
+
   return (
     <article className="project-case-card">
       {/* Top Meta Line */}
@@ -69,43 +73,79 @@ export default function ProjectCard({
         </div>
       </div>
 
-      {/* Architecture Flow Visual */}
-      {architectureFlow && architectureFlow.length > 0 && (
-        <div className="architecture-box">
+      {/* Key Highlights directly from Resume */}
+      {highlights && highlights.length > 0 && (
+        <div className="case-highlights-box">
           <div className="arch-header font-mono">
             <span className="arch-dot"></span>
-            <span>SYSTEM PIPELINE ARCHITECTURE</span>
+            <span>KEY CAPABILITIES &amp; DELIVERABLES</span>
           </div>
-          <div className="arch-flow-row font-mono">
-            {architectureFlow.map((step, idx) => (
-              <React.Fragment key={step}>
-                <div className="arch-node">
-                  <span className="node-text">{step}</span>
-                </div>
-                {idx < architectureFlow.length - 1 && (
-                  <div className="arch-arrow" aria-hidden="true">
-                    &rarr;
-                  </div>
-                )}
-              </React.Fragment>
+          <ul className="case-highlights-list">
+            {highlights.map((item, idx) => (
+              <li key={idx} className="case-highlight-bullet">
+                <span className="case-highlight-dash font-mono">&mdash;</span>
+                <span className="case-highlight-text">{item}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       )}
 
-      {/* Engineering Challenge & Solution */}
-      {(challenge || solution) && (
-        <div className="case-engineering-deepdive">
-          {challenge && (
-            <div className="deepdive-block">
-              <span className="deepdive-label font-mono">ENGINEERING CHALLENGE</span>
-              <p className="deepdive-text">{challenge}</p>
-            </div>
-          )}
-          {solution && (
-            <div className="deepdive-block">
-              <span className="deepdive-label font-mono">ARCHITECTURAL SOLUTION</span>
-              <p className="deepdive-text">{solution}</p>
+      {/* Collapsible Architecture & Deep Dive */}
+      {hasDeepDive && (
+        <div className="case-deepdive-wrapper">
+          <button
+            type="button"
+            className="case-deepdive-toggle font-mono"
+            onClick={() => setShowDeepDive(!showDeepDive)}
+            aria-expanded={showDeepDive}
+          >
+            <span>{showDeepDive ? '▲ Hide Architecture & Pipeline' : '▼ View Architecture & Pipeline Flow'}</span>
+          </button>
+
+          {showDeepDive && (
+            <div className="case-deepdive-expandable fade-in">
+              {/* Architecture Flow Visual */}
+              {architectureFlow && architectureFlow.length > 0 && (
+                <div className="architecture-box">
+                  <div className="arch-header font-mono">
+                    <span className="arch-dot"></span>
+                    <span>SYSTEM PIPELINE ARCHITECTURE</span>
+                  </div>
+                  <div className="arch-flow-row font-mono">
+                    {architectureFlow.map((step, idx) => (
+                      <Fragment key={step}>
+                        <div className="arch-node">
+                          <span className="node-text">{step}</span>
+                        </div>
+                        {idx < architectureFlow.length - 1 && (
+                          <div className="arch-arrow" aria-hidden="true">
+                            &rarr;
+                          </div>
+                        )}
+                      </Fragment>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Engineering Challenge & Solution */}
+              {(challenge || solution) && (
+                <div className="case-engineering-deepdive">
+                  {challenge && (
+                    <div className="deepdive-block">
+                      <span className="deepdive-label font-mono">ENGINEERING CHALLENGE</span>
+                      <p className="deepdive-text">{challenge}</p>
+                    </div>
+                  )}
+                  {solution && (
+                    <div className="deepdive-block">
+                      <span className="deepdive-label font-mono">ARCHITECTURAL SOLUTION</span>
+                      <p className="deepdive-text">{solution}</p>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           )}
         </div>

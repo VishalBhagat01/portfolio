@@ -1,53 +1,50 @@
-import React from 'react';
 
 export default function SkillsMatrix() {
   const skillCategories = [
     {
       title: 'AI / ML & AGENTS',
-      description: 'Orchestration, retrieval, and inference frameworks',
+      description: 'Orchestration, multi-agent workflows, and model frameworks',
       skills: [
+        'LangGraph',
+        'LangChain',
+        'TensorFlow',
+        'Scikit-learn',
+        'OpenCV',
         'LLMs',
         'RAG',
-        'LangGraph',
-        'PyTorch',
-        'HuggingFace',
-        'Machine Learning',
         'Embeddings',
-        'Prompt Engineering',
         'Agentic AI',
       ],
     },
     {
-      title: 'BACKEND & SYSTEMS',
-      description: 'Asynchronous APIs, persistence, and state management',
+      title: 'BACKEND & DATABASES',
+      description: 'Asynchronous backends, persistence, and caching',
       skills: [
         'FastAPI',
-        'REST APIs',
+        'Node.js',
+        'Express.js',
         'PostgreSQL',
-        'SQLAlchemy',
         'MongoDB',
-        'Docker',
-        'Async Python',
+        'MySQL',
+        'SQLAlchemy',
+        'REST APIs',
         'Caching',
-        'LRU Cache',
-        'TTL',
-        'Session Management',
       ],
     },
     {
-      title: 'AI INFRASTRUCTURE',
-      description: 'Accelerated compute and model inference APIs',
-      skills: ['Groq LPU', 'Ollama', 'Model APIs', 'Vector Retrieval', 'GPU / CUDA'],
-    },
-    {
       title: 'LANGUAGES',
-      description: 'Core programming and scripting languages',
-      skills: ['Python', 'JavaScript (ES6+)', 'SQL', 'HTML5', 'CSS3'],
+      description: 'Core programming and computational languages',
+      skills: ['Java', 'Python', 'JavaScript', 'C++', 'SQL'],
     },
     {
       title: 'FRONTEND',
-      description: 'Modern user interfaces and developer tooling views',
-      skills: ['React', 'JavaScript', 'HTML', 'CSS', 'Responsive UI', 'Vite'],
+      description: 'Modern reactive interfaces and styling systems',
+      skills: ['React.js', 'Tailwind CSS', 'HTML5', 'CSS3', 'Vite', 'Responsive UI'],
+    },
+    {
+      title: 'TOOLS & CLOUD',
+      description: 'Deployment, containers, and developer infrastructure',
+      skills: ['Git', 'GitHub', 'Docker', 'Postman', 'Azure', 'Groq LPU', 'Ollama'],
     },
   ];
 

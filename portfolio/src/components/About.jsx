@@ -1,4 +1,3 @@
-import React from 'react';
 import deskSetupImg from '../assets/desk_setup.jpg';
 import AudioPlayer from './AudioPlayer';
 import { IconCpu } from './Icons';

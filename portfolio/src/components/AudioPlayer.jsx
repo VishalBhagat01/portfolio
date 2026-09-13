@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { IconPlay, IconPause, IconMusic } from './Icons';
 
 export default function AudioPlayer() {
@@ -69,11 +69,15 @@ export default function AudioPlayer() {
           try {
             osc.stop();
             osc.disconnect();
-          } catch (_) {}
+          } catch (error) {
+            console.warn('Unable to stop ambient oscillator:', error);
+          }
         });
         oscillatorNodesRef.current = null;
       }
-    } catch (_) {}
+    } catch (error) {
+      console.warn('Unable to stop ambient audio:', error);
+    }
   };
 
   const togglePlay = () => {
@@ -115,7 +119,9 @@ export default function AudioPlayer() {
       if (audioCtxRef.current) {
         try {
           audioCtxRef.current.close();
-        } catch (_) {}
+        } catch (error) {
+          console.warn('Unable to close audio context:', error);
+        }
       }
     };
   }, []);
@@ -192,6 +198,12 @@ export default function AudioPlayer() {
               <div
                 key={track.id}
                 onClick={() => selectTrack(idx)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    selectTrack(idx);
+                  }
+                }}
                 className={`queue-item ${isSelected ? 'selected' : ''}`}
                 role="button"
                 tabIndex={0}

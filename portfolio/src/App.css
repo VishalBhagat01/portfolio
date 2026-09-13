@@ -1,6 +1,5 @@
 /* ==========================================================================
    App.css — Complete Styling for Vishal Bhagat's AI Engineer Portfolio
-   Inspired by angad.social — Sophisticated, Minimalist, High-Tech Aesthetic
    ========================================================================== */
 
 /* Layout & Container */
@@ -1100,17 +1099,132 @@
 }
 
 /* ==========================================================================
-   6. Work & Engineering Section (3-Column Architecture)
+   6. Work & Engineering Section (Side-by-Side 2-Column Architecture)
    ========================================================================== */
 .work-section {
   padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.work-grid-3col {
+.work-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.section-header-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.work-filter-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.work-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.work-filter-btn:hover {
+  border-color: var(--accent);
+  color: #ffffff;
+}
+
+.work-filter-btn.active {
+  background: rgba(193, 92, 101, 0.15);
+  border-color: var(--accent);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(193, 92, 101, 0.2);
+}
+
+.filter-count-badge {
+  font-size: 0.68rem;
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+}
+
+.work-filter-btn.active .filter-count-badge {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* Side-by-Side 2-Column Projects Grid */
+.projects-grid-2col {
   display: grid;
-  grid-template-columns: 310px 1fr 310px;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   align-items: start;
+}
+
+@media (max-width: 960px) {
+  .projects-grid-2col {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Engineering Ecosystem Section (Below Projects) */
+.work-ecosystem-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.ecosystem-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ecosystem-title {
+  font-size: 1.2rem;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.work-ecosystem-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .work-ecosystem-2col {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ecosystem-col-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .work-col-card {
@@ -1418,6 +1532,81 @@
   border-radius: 4px;
 }
 
+/* Key Highlights Box */
+.case-highlights-box {
+  background: #08080a;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.case-highlights-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.case-highlight-bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #d1d5db;
+}
+
+.case-highlight-dash {
+  color: var(--accent);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.case-highlight-text {
+  color: #d1d5db;
+}
+
+/* Collapsible Architecture & Deep Dive Toggle */
+.case-deepdive-wrapper {
+  margin-top: 4px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+  padding-top: 12px;
+}
+
+.case-deepdive-toggle {
+  width: 100%;
+  background: rgba(193, 92, 101, 0.06);
+  border: 1px solid rgba(193, 92, 101, 0.25);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.case-deepdive-toggle:hover {
+  background: rgba(193, 92, 101, 0.14);
+  border-color: var(--accent);
+  color: #ffffff;
+}
+
+.case-deepdive-expandable {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 /* Architecture Flow Box */
 .architecture-box {
   background: #08080a;
@@ -1641,7 +1830,278 @@
   background: var(--accent-bright);
 }
 
-/* Dense ATS Resume Sheet */
+.resume-subtitle-chip {
+  display: inline-block;
+  font-size: 0.68rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  margin-top: 3px;
+}
+
+#details-section {
+  scroll-margin-top: 86px;
+}
+
+/* Executive Resume Summary Grid */
+.resume-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 960px) {
+  .resume-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.resume-summary-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.summary-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 8px;
+}
+
+.summary-card-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.summary-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.8rem;
+}
+
+.summary-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+}
+
+.summary-link {
+  color: #ffffff;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.summary-link:hover {
+  color: var(--accent-light);
+  text-decoration: underline;
+}
+
+.summary-label {
+  color: var(--text-muted);
+}
+
+.summary-val {
+  color: #ffffff;
+}
+
+.summary-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.summary-pill-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #121217;
+  border: 1px solid var(--border);
+  color: #e4e4e7;
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.summary-pill-link:hover {
+  border-color: var(--accent);
+  color: #ffffff;
+  background: rgba(193, 92, 101, 0.12);
+}
+
+.summary-edu-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.summary-edu-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-bold {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+.summary-sub {
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+}
+
+.summary-year {
+  color: var(--accent);
+  font-size: 0.72rem;
+}
+
+.summary-achievement-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #d1d5db;
+}
+
+.summary-achievement-item strong {
+  color: #ffffff;
+}
+
+/* PDF Document Viewer Container */
+.resume-pdf-viewer-card {
+  background: #09090c;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+}
+
+.pdf-viewer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  background: #111116;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.78rem;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pdf-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pdf-file-icon {
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.pdf-filename {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.pdf-badge {
+  background: rgba(193, 92, 101, 0.15);
+  color: var(--accent-light);
+  border: 1px solid rgba(193, 92, 101, 0.35);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.pdf-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pdf-quick-dl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--transition-fast);
+}
+
+.pdf-quick-dl-btn:hover {
+  background: var(--accent-bright);
+}
+
+.pdf-embed-container {
+  width: 100%;
+  height: 980px;
+  background: #18181b;
+  position: relative;
+}
+
+.resume-pdf-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #ffffff;
+}
+
+.pdf-viewer-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  background: #111116;
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pdf-footer-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color var(--transition-fast);
+}
+
+.pdf-footer-link:hover {
+  color: var(--accent-bright);
+  text-decoration: underline;
+}
+
+/* Dense ATS Resume Sheet (Fallback / Alternative) */
 .resume-sheet-container {
   background: #0a0a0c;
   border: 1px solid var(--border);

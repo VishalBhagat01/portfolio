@@ -1,4 +1,3 @@
-import React from 'react';
 import { IconHome } from './Icons';
 
 export default function Navbar({ activeTab, onTabChange }) {
@@ -13,10 +12,14 @@ export default function Navbar({ activeTab, onTabChange }) {
   return (
     <header className="navbar-wrapper">
       <nav className="floating-navbar" aria-label="Main Navigation">
-        <div className="nav-brand" onClick={() => onTabChange('home')} role="button" tabIndex={0}>
+        <button
+          className="nav-brand"
+          onClick={() => onTabChange('home')}
+          aria-label="Go to home"
+        >
           <span className="brand-dot"></span>
           <span className="brand-text">vishal<span className="brand-accent">.ai</span></span>
-        </div>
+        </button>
 
         <div className="nav-pill-container">
           {tabs.map((tab) => {
