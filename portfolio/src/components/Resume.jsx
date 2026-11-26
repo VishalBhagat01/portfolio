@@ -77,7 +77,7 @@ export default function Resume() {
                 <span>LinkedIn</span>
               </a>
               <a
-                href="https://leetcode.com"
+                href="https://leetcode.com/u/VishalBhagat01"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="summary-pill-link"
@@ -85,7 +85,7 @@ export default function Resume() {
                 <span>LeetCode</span>
               </a>
               <a
-                href="https://codeforces.com"
+                href="https://codeforces.com/profile/VishalBhagat01"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="summary-pill-link"
@@ -106,7 +106,7 @@ export default function Resume() {
             <div className="summary-edu-row">
               <div className="summary-edu-main">
                 <span className="summary-bold">Bhagwan Parshuram Institute of Technology</span>
-                <span className="summary-sub">B.Tech in Computer Science Engineering</span>
+                <span className="summary-sub">B.Tech in Computer Science Engineering (GGSIPU) &bull; CGPA 8.6/10</span>
               </div>
               <span className="summary-year">Expected 2028 &bull; Delhi</span>
             </div>
@@ -129,15 +129,15 @@ export default function Resume() {
           <div className="summary-card-body">
             <div className="summary-achievement-item">
               <span className="accent-rose">&bull;</span>
-              <span><strong>400+ DSA</strong> problems solved on LeetCode &amp; Codeforces</span>
+              <span><strong>500+ DSA</strong> problems solved in C++ on LeetCode &amp; Codeforces</span>
             </div>
             <div className="summary-achievement-item">
               <span className="accent-rose">&bull;</span>
-              <span><strong>1400+ max rating</strong> achieved on LeetCode</span>
+              <span>Peak ratings: <strong>1500</strong> LeetCode, <strong>1157</strong> Codeforces</span>
             </div>
             <div className="summary-achievement-item">
               <span className="accent-rose">&bull;</span>
-              <span>Active member of <strong>Hash Define</strong>, BPIT's technical society</span>
+              <span><strong>IBM Advanced AI Agent</strong> Certification</span>
             </div>
             <div className="summary-achievement-item">
               <span className="accent-rose">&bull;</span>

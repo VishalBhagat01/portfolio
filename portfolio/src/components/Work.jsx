@@ -6,10 +6,10 @@ export default function Work() {
   const [selectedFilter, setSelectedFilter] = useState('all');
 
   const filterTabs = [
-    { id: 'all', label: 'All Projects', count: 5 },
+    { id: 'all', label: 'All Projects', count: 6 },
     { id: 'ai', label: 'AI & Multi-Agent', count: 3 },
     { id: 'devtools', label: 'Developer Tooling', count: 1 },
-    { id: 'systems', label: 'Backend & Systems', count: 1 },
+    { id: 'systems', label: 'Backend & Systems', count: 2 },
   ];
 
   const progressionSteps = [
@@ -172,6 +172,34 @@ export default function Work() {
         'Architected an asynchronous pipeline in FastAPI combining an LRU/TTL query cache with vector retrieval and SQLAlchemy session pooling, preventing redundant embedding lookups.',
       techStack: ['Python', 'FastAPI', 'RAG', 'PostgreSQL', 'SQLAlchemy', 'LRU Cache', 'Embeddings'],
       githubUrl: 'https://github.com/VishalBhagat01/untold-india',
+      demoUrl: null,
+    },
+    {
+      number: '06',
+      title: 'DevChat',
+      filterType: 'systems',
+      category: 'Distributed Collaborative Workspace',
+      subtitle: 'Real-time collaborative browser IDE with multi-file code execution and a distributed pub/sub backend.',
+      description:
+        'Built, stress-tested, and scaled a real-time browser IDE supporting multi-file code execution and asynchronous state sync, backed by a Redis-adapter pub/sub layer with JWT security.',
+      highlights: [
+        'Built a real-time browser IDE using React and Node.js supporting multi-file code execution and asynchronous AJAX/HTTP state sync.',
+        'Architected a distributed pub/sub backend using Node.js, Socket.IO, and Redis Adapter with JWT security, sustaining 50 concurrent clients at 11.64ms P95 RTT with zero timeouts.',
+        'Optimized database throughput with compound indexes and cursor pagination, achieving 0% HTTP error rate and 239.81-380.71ms P95 latency across 220 concurrent requests.',
+      ],
+      architectureFlow: [
+        'React Client',
+        'Socket.IO Gateway',
+        'Redis Adapter Pub/Sub',
+        'Node.js Services',
+        'MongoDB Persistence',
+      ],
+      challenge:
+        'Keeping multi-user editing state consistent across server instances under concurrent load.',
+      solution:
+        'Used a Redis pub/sub adapter behind Socket.IO with JWT auth, and compound indexes with cursor pagination for stable database throughput.',
+      techStack: ['React', 'Node.js', 'Socket.IO', 'Redis', 'MongoDB', 'Express', 'JavaScript'],
+      githubUrl: 'https://github.com/VishalBhagat01/DevChat',
       demoUrl: null,
     },
   ];
